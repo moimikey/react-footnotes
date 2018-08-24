@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { shallow } from 'enzyme'
-import { Footnotes } from '.'
+import Footnotes from './Footnotes'
 
 describe('react-footnotes', () => {
   it('renders footnotes', () => {
