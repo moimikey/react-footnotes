@@ -9,8 +9,7 @@ class Footnotes extends React.Component {
     this._done = false
     this._footnotes = {}
     this.state = {
-      footnotes: {},
-      count: 0
+      footnotes: {}
     }
   }
   componentDidMount () {
