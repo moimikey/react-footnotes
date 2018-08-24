@@ -23,7 +23,7 @@ Pass any props you want to read from `getFootnotes`, to `Footnote`.
 
 ```jsx
 import * as React from 'react'
-import * as Footnotes from 'react-footnotes'
+import { Footnotes } from 'react-footnotes'
 
 class App extends React.Component {
   render() {
@@ -36,7 +36,7 @@ class App extends React.Component {
             <Footnote i={3} desc={`this is a description.`}>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</Footnote>
             <Footnote i={4} desc={`this is a description.`}>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Footnote>
             <ol>
-              {Object.keys(getFootnotes()).map((i) => {
+              {Object.keys(getFootnotes()).map(i => {
                 return (
                   <li key={`footnote-${i}`} id={`footnote-${i}`}>{getFootnotes()[i].desc}</li>
                 )
@@ -52,7 +52,7 @@ class App extends React.Component {
 
 ## TODO
 
-- [ ] automatically generate the index number so it doesn't have to be passed manually
+- [ ] automatically generate the index number so it doesn't have to be passed manually...
 
 ## Development
 
