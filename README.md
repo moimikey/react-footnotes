@@ -2,6 +2,9 @@
 
 dead simple footnotes, in React
 
+<img width="399" alt="react-footnotes" src="https://user-images.githubusercontent.com/182661/44605190-611d5980-a7b6-11e8-858b-0e640965a7b6.png">
+
+
 ## Installation
 
 ```sh
