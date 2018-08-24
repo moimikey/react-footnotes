@@ -1,6 +1,7 @@
 {
   "name": "react-footnotes",
   "version": "0.1.2",
+  "reveal": true,
   "description": "👣 dead simple footnotes, in React",
   "main": "src/Footnotes.js",
   "module": "build/react-footnotes.js",
