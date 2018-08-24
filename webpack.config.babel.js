@@ -10,6 +10,7 @@ export default function () {
       ]
     },
     output: {
+      libraryTarget: 'commonjs',
       path: path.resolve(__dirname, 'build'),
       filename: 'react-footnotes.js'
     }

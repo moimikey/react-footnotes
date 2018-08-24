@@ -48,4 +48,6 @@ class Footnotes extends React.Component {
   }
 }
 
-export default Footnotes
+export {
+  Footnotes
+}

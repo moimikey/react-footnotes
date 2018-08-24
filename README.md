@@ -11,10 +11,10 @@ yarn add react-footnotes
 
 ```js
 // esmodules
-import Footnotes from 'react-footnotes'
+import { Footnotes } from 'react-footnotes'
 
 // commonjs
-var Footnotes = require('react-footnotes')
+var Footnotes = require('react-footnotes').Footnotes
 ```
 
 ## Usage
