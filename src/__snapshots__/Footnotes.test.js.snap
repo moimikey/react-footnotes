@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`react-footnotes renders footnotes 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Footnotes>
+    [Function]
+  </Footnotes>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <React.Fragment>
+        <Footnote
+          desc="this is a description."
+          i={1}
+          source="https://google.com"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </Footnote>
+        <Footnote
+          desc="this is a description."
+          i={2}
+          source="https://google.com"
+        >
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </Footnote>
+        <Footnote
+          desc="this is a description."
+          i={3}
+          source="https://google.com"
+        >
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </Footnote>
+        <Footnote
+          desc="this is a description."
+          i={4}
+          source="https://google.com"
+        >
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </Footnote>
+        {}
+      </React.Fragment>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <Footnote
+            desc="this is a description."
+            i={1}
+            source="https://google.com"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </Footnote>,
+          <Footnote
+            desc="this is a description."
+            i={2}
+            source="https://google.com"
+          >
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </Footnote>,
+          <Footnote
+            desc="this is a description."
+            i={3}
+            source="https://google.com"
+          >
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </Footnote>,
+          <Footnote
+            desc="this is a description."
+            i={4}
+            source="https://google.com"
+          >
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </Footnote>,
+          "{}",
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "this is a description.",
+            "i": 1,
+            "source": "https://google.com",
+          },
+          "ref": null,
+          "rendered": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "desc": "this is a description.",
+            "i": 2,
+            "source": "https://google.com",
+          },
+          "ref": null,
+          "rendered": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "desc": "this is a description.",
+            "i": 3,
+            "source": "https://google.com",
+          },
+          "ref": null,
+          "rendered": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "desc": "this is a description.",
+            "i": 4,
+            "source": "https://google.com",
+          },
+          "ref": null,
+          "rendered": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "type": [Function],
+        },
+        "{}",
+      ],
+      "type": Symbol(react.fragment),
+    },
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <React.Fragment>
+          <Footnote
+            desc="this is a description."
+            i={1}
+            source="https://google.com"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </Footnote>
+          <Footnote
+            desc="this is a description."
+            i={2}
+            source="https://google.com"
+          >
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </Footnote>
+          <Footnote
+            desc="this is a description."
+            i={3}
+            source="https://google.com"
+          >
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </Footnote>
+          <Footnote
+            desc="this is a description."
+            i={4}
+            source="https://google.com"
+          >
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </Footnote>
+          {}
+        </React.Fragment>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <Footnote
+              desc="this is a description."
+              i={1}
+              source="https://google.com"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Footnote>,
+            <Footnote
+              desc="this is a description."
+              i={2}
+              source="https://google.com"
+            >
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </Footnote>,
+            <Footnote
+              desc="this is a description."
+              i={3}
+              source="https://google.com"
+            >
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </Footnote>,
+            <Footnote
+              desc="this is a description."
+              i={4}
+              source="https://google.com"
+            >
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Footnote>,
+            "{}",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              "desc": "this is a description.",
+              "i": 1,
+              "source": "https://google.com",
+            },
+            "ref": null,
+            "rendered": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              "desc": "this is a description.",
+              "i": 2,
+              "source": "https://google.com",
+            },
+            "ref": null,
+            "rendered": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+              "desc": "this is a description.",
+              "i": 3,
+              "source": "https://google.com",
+            },
+            "ref": null,
+            "rendered": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+              "desc": "this is a description.",
+              "i": 4,
+              "source": "https://google.com",
+            },
+            "ref": null,
+            "rendered": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "type": [Function],
+          },
+          "{}",
+        ],
+        "type": Symbol(react.fragment),
+      },
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;
