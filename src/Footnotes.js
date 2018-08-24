@@ -13,7 +13,6 @@ class Footnotes extends React.Component {
     }
   }
   componentDidMount () {
-    let i = 1
     walker(this.props.children({
       Footnote,
       getFootnotes: () => {
