@@ -18,6 +18,9 @@
     "component",
     "footnote"
   ],
+  "repository": {
+    "url": "https://github.com/moimikey/react-footnotes"
+  },
   "author": "Michael Scott Hertzberg <mshertzberg@gmail.com> (https://hertzber.gs)",
   "license": "WTFPL",
   "standard": {
