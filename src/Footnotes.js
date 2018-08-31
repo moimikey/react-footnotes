@@ -19,7 +19,7 @@ class Footnotes extends React.Component {
         return this.state.footnotes
       }
     }), this.visit)
-      .then(() => { this._done = false })
+      .then(() => { this._done = true })
       .catch(err => console.error(err))
   }
   visit = (el, instance) => {
