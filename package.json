@@ -60,7 +60,7 @@
     "parcel": "^1.9.7",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "rimraf": "^2.6.2",
+    "rimraf": "^3.0.2",
     "standard": "^11.0.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
