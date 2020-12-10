@@ -52,7 +52,7 @@
     "cross-env": "^7.0.3",
     "enzyme": "^3.4.4",
     "enzyme-adapter-react-16": "^1.2.0",
-    "eslint": "^5.4.0",
+    "eslint": "^7.15.0",
     "jest": "^23.5.0",
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.3",
