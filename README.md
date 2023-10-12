@@ -1,26 +1,100 @@
 # 👣 react-footnotes
 
-dead simple footnotes, in React
+Dead simple footnotes, in React!
 
-<img width="399" alt="react-footnotes" src="https://user-images.githubusercontent.com/182661/44605190-611d5980-a7b6-11e8-858b-0e640965a7b6.png">
+- Doesn't alter wrapped element or add any extra divs or spans
+- Automatically increments footnote identifier number with every new footnote
 
+## New in 1.0!
 
-## Installation
+- Smaller package size
+- Uses Vite
+
+## Usage
+
+### Install react-footnotes to your project
 
 ```sh
-npm install --save react-footnotes
+npm install react-footnotes
+# OR
 yarn add react-footnotes
+# OR
+pnpm install react-footnotes
+# OR
+bun install react-footnotes
 ```
+
+### Import the `Footnotes` component
 
 ```js
 // esmodules
 import { Footnotes } from 'react-footnotes'
 
 // commonjs
-var Footnotes = require('react-footnotes').Footnotes
+const Footnotes = require('react-footnotes').Footnotes
 ```
 
-## Usage
+### In the same file, create a wrapper component for single Footnotes
+
+**Example:**
+*This let's you customize each footnote line*
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit.^1^
+
+```tsx
+const createFootnoteComponentWith = (Component: React.ElementType) => {
+  return ({ children, id }: { children: React.ReactNode; id: number }) => {
+    return (
+      <Component>
+        {children}
+        <a href={`#footnote-${id}`}> {/* perhaps use Link instead? */}
+          <sup>{id}</sup>            {/* maybe <sub> instead? */}
+        </a>
+      </Component>
+    );
+  };
+};
+```
+
+### Finally, render Footnotes! :)
+
+```tsx
+ <Footnotes>
+  {({ Footnote, getFootnotes }) => {
+    const footnotes = getFootnotes();
+    const Note = createFootnoteComponentWith(Footnote);
+    return (
+      <React.Fragment>
+        <Note key={`note-1`} id={1}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </Note>{" "}
+        <Note key={`note-2`} id={2}>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat.
+        </Note>{" "}
+        <Note key={`note-3`} id={3}>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur.
+        </Note>{" "}
+        <Note key={`note-4`} id={4}>
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa
+          qui officia deserunt mollit anim id est laborum.
+        </Note>{" "}
+        <hr />
+        References: should only show {footnotes.size} footnotes
+        {Array.from(footnotes).map(
+          ([noteId, footnote]: FootnoteEntry) => (
+            <div key={`footnote-${noteId}`} id={`footnote-${noteId}`}>
+              <sup>{noteId}</sup>: {footnote}
+            </div>
+          )
+        )}
+      </React.Fragment>
+    );
+  }}
+</Footnotes>
+```
+
+### Create
 
 Pass any props you want to read from `getFootnotes`, to `Footnote`.
 
@@ -60,13 +134,16 @@ class App extends React.Component {
 ## Development
 
 ```sh
-npm run dev
-
 # go to http://localhost:1234
+npm run dev
 ```
 
-### Distribution
 
-```sh
-npm run build
-```
+{
+  /*{Object.keys(footnotes).map((id, index) => {
+  const footnote = footnotes[index];
+  return footnote ? (
+    <div key={`footnote-${id}-${index}`} id={`footnote-${id}`}>{id} xxx {JSON.stringify(footnote)}</div>
+  ) : null
+})}*/
+}
