@@ -1,28 +1,36 @@
-import React, { useEffect, ReactNode, useState, useRef } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  ReactElement,
+  JSXElementConstructor,
+} from "react";
 import walker from "react-tree-walker";
 
 export function Footnote({
   children,
   id,
 }: {
-  children: ReactNode;
+  children: ReactElement;
   id: number;
 }) {
   return React.createElement(React.Fragment, { key: id }, children);
 }
-
 Footnote.displayName = "Footnote";
 
-export type FootnoteEntry = [number, ReactNode];
+export type FootnoteEntry = [number, ReactElement];
 export type FootnotesChildren = (props: {
   Footnote: typeof Footnote;
-  footnotes: Map<number, ReactNode>;
-}) => ReactNode;
-
-export function Footnotes(props: { children: FootnotesChildren }) {
+  footnotes: Map<number, ReactElement>;
+}) => ReactElement;
+export function Footnotes(props: {
+  children: FootnotesChildren;
+}): ReactElement<any, string | JSXElementConstructor<any>> {
   const initialized = useRef(false);
-  const [footnotes, setFootnotes] = useState<Map<number, ReactNode>>(new Map());
-  const newFootnotes = new Map<number, ReactNode>();
+  const [footnotes, setFootnotes] = useState<Map<number, ReactElement>>(
+    new Map()
+  );
+  const newFootnotes = new Map<number, ReactElement>();
 
   const visit = (el: any) => {
     if (el.type && el.type.displayName === "Footnote") {
@@ -43,7 +51,6 @@ export function Footnotes(props: { children: FootnotesChildren }) {
 
   return props.children({ Footnote, footnotes });
 }
-
 Footnotes.displayName = "Footnotes";
 
 export default Footnotes;

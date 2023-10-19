@@ -1,10 +1,13 @@
 /**
  * @jest-environment jsdom
  */
-// ^^^^^^^^^^^^^^^^^^^^^^^ DO NOT REMOVE
+// ^^^^^^^^^^^^^^^^^^^^^^^ DO NOT REMOVE OR RELOCATE
+//                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+// @ts-nocheck
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
+import renderer from "react-test-renderer";
 import { Footnotes } from "../src";
 
 let container: Element | null = null;
@@ -28,7 +31,7 @@ afterEach(() => {
  */
 
 it("collects and provides footnotes correctly", async () => {
-  let collectedFootnotes;
+  let collectedFootnotes: unknown;
   const testFootnoteA =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
   const testFootnoteB =
@@ -91,4 +94,33 @@ it("collects and provides footnotes correctly", async () => {
     );
   });
   expect(container?.innerHTML).toBe(expectedOutput);
+});
+
+it("can render", () => {
+  const testFootnoteA =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+  const testFootnoteB =
+    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+  const tree = renderer
+    .create(
+      <React.StrictMode>
+        <Footnotes>
+          {({ Footnote, footnotes }) => {
+            return (
+              <React.Fragment>
+                <Footnote id={1}>{testFootnoteA}</Footnote>
+                <Footnote id={2}>{testFootnoteB}</Footnote>
+                {Array.from(footnotes).map(([id, footnote]) => (
+                  <div key={`footnote-${id}`} id={`footnote-${id}`}>
+                    <sup>{id}</sup> {footnote}
+                  </div>
+                ))}
+              </React.Fragment>
+            );
+          }}
+        </Footnotes>
+      </React.StrictMode>
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });

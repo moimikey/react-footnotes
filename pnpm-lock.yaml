@@ -73,6 +73,9 @@ devDependencies:
   prettier:
     specifier: 2.8.8
     version: 2.8.8
+  react-test-renderer:
+    specifier: 18.2.0
+    version: 18.2.0(react@18.2.0)
   rollup-plugin-typescript-paths:
     specifier: 1.4.0
     version: 1.4.0(typescript@4.9.5)
@@ -4449,6 +4452,27 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
+  /react-shallow-renderer@16.15.0(react@18.2.0):
+    resolution: {integrity: sha512-oScf2FqQ9LFVQgA73vr86xl2NaOIX73rh+YFqcOp68CWj56tSfgtGKrEbyhCj0rSijyG9M1CYprTh39fBi5hzA==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      object-assign: 4.1.1
+      react: 18.2.0
+      react-is: 18.2.0
+    dev: true
+
+  /react-test-renderer@18.2.0(react@18.2.0):
+    resolution: {integrity: sha512-JWD+aQ0lh2gvh4NM3bBM42Kx+XybOxCpgYK7F8ugAlpaTSnWsX+39Z4XkOykGZAHrjwwTZT3x3KxswVWxHPUqA==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      react: 18.2.0
+      react-is: 18.2.0
+      react-shallow-renderer: 16.15.0(react@18.2.0)
+      scheduler: 0.23.0
+    dev: true
+
   /react-tree-walker@4.3.0(react@18.2.0):
     resolution: {integrity: sha512-sO/pk+JQ2mbtPGdlKbeeo2aT4qXl5nPkGVO96yYQOdX9jYvRNXSnMWIydniLVEoiPvUbpfoc057blGbAQgMBRg==}
     peerDependencies:
@@ -4462,7 +4486,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-package-json-fast@3.0.2:
     resolution: {integrity: sha512-0J+Msgym3vrLOUB3hzQCuZHII0xkNGCtz/HJH9xZshwv9DbDwkw1KaE3gx/e2J5rpEY5rtOy6cyhKOPrkP7FZw==}
@@ -4642,7 +4665,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}

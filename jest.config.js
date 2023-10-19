@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 module.exports = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testMatch: [

@@ -22,8 +22,9 @@ export default defineConfig({
     minify: true,
     reportCompressedSize: true,
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
+      entry: path.resolve(__dirname, "lib/Footnotes.ts"),
       fileName: "Footnotes",
+      name: "Footnotes",
       formats: ["es", "cjs"],
     },
     rollupOptions: {
@@ -33,7 +34,7 @@ export default defineConfig({
           preserveExtensions: true,
         }),
         typescript({
-          sourceMap: false,
+          sourceMap: true,
           declaration: true,
           outDir: "dist",
         }),

@@ -18,10 +18,12 @@
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "~/lib": ["lib/*"],
+      "~/test": ["test/*"]
     },
   },
   "testEnvironment": "jsdom",
-  "include": ["./src", "./test", "react-tree-walker.d.ts"],
+  "include": ["./src", "./lib", "./test", "react-tree-walker.d.ts", "lib/Footnotes.ts"],
   "exclude": ["node_modules"]
 }
