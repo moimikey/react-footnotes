@@ -8,7 +8,7 @@ export function Footnote({
   children: ReactNode;
   id: number;
 }) {
-  return <React.Fragment key={id}>{children}</React.Fragment>;
+  return React.createElement(React.Fragment, { key: id }, children);
 }
 
 Footnote.displayName = "Footnote";
@@ -41,9 +41,7 @@ export function Footnotes(props: { children: FootnotesChildren }) {
     }
   }, []);
 
-  return (
-    <React.Fragment>{props.children({ Footnote, footnotes })}</React.Fragment>
-  );
+  return props.children({ Footnote, footnotes });
 }
 
 Footnotes.displayName = "Footnotes";
