@@ -1,7 +1,6 @@
 import React, {
   JSXElementConstructor,
   ReactElement,
-  useEffect,
   useRef,
   useState,
 } from "react";
@@ -23,6 +22,7 @@ export type FootnotesChildren = (props: {
   Footnote: typeof Footnote;
   footnotes: Map<number, ReactElement>;
 }) => ReactElement;
+
 export function Footnotes(props: {
   children: FootnotesChildren;
 }): ReactElement<any, string | JSXElementConstructor<any>> {
@@ -42,12 +42,10 @@ export function Footnotes(props: {
     }
   };
 
-  useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-      walker(props.children({ Footnote, footnotes: newFootnotes }), visit);
-    }
-  }, []);
+  if (!initialized.current) {
+    initialized.current = true;
+    walker(props.children({ Footnote, footnotes: newFootnotes }), visit);
+  }
 
   return props.children({ Footnote, footnotes });
 }
