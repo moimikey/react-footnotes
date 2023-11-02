@@ -20,10 +20,17 @@
     "paths": {
       "~/*": ["src/*"],
       "~/lib": ["lib/*"],
-      "~/test": ["test/*"]
-    },
+      "~/test": ["test/*"],
+      "~/src": ["src/*"]
+    }
   },
   "testEnvironment": "jsdom",
-  "include": ["./src", "./lib", "./test", "react-tree-walker.d.ts", "lib/Footnotes.ts"],
+  "include": [
+    "./src",
+    "./lib",
+    "./test",
+    "react-tree-walker.d.ts",
+    "lib/Footnotes.tsx"
+  ],
   "exclude": ["node_modules"]
 }

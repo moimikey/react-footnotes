@@ -1,8 +1,12 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
-import react from '@vitejs/plugin-react-swc'
+import react from "@vitejs/plugin-react-swc";
 import typescript from "@rollup/plugin-typescript";
-import path from "path";
 import { typescriptPaths } from "rollup-plugin-typescript-paths";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
@@ -28,7 +32,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ["react", "react-dom"],
       plugins: [
         typescriptPaths({
           preserveExtensions: true,

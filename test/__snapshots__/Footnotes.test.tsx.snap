@@ -1,8 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`can render 1`] = `
-[
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-]
+{
+  "instance": null,
+  "nodeType": "component",
+  "props": {
+    "children": [Function],
+  },
+  "rendered": [
+    {
+      "instance": null,
+      "nodeType": "component",
+      "props": {
+        "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      "rendered": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        {
+          "instance": null,
+          "nodeType": "host",
+          "props": {
+            "children": <sup />,
+            "href": "#footnote-undefined",
+            "id": "footnote-link-undefined",
+          },
+          "rendered": [
+            {
+              "instance": null,
+              "nodeType": "host",
+              "props": {
+                "children": undefined,
+              },
+              "rendered": [],
+              "type": "sup",
+            },
+          ],
+          "type": "a",
+        },
+      ],
+      "type": [Function],
+    },
+    {
+      "instance": null,
+      "nodeType": "component",
+      "props": {
+        "children": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      },
+      "rendered": [
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        {
+          "instance": null,
+          "nodeType": "host",
+          "props": {
+            "children": <sup />,
+            "href": "#footnote-undefined",
+            "id": "footnote-link-undefined",
+          },
+          "rendered": [
+            {
+              "instance": null,
+              "nodeType": "host",
+              "props": {
+                "children": undefined,
+              },
+              "rendered": [],
+              "type": "sup",
+            },
+          ],
+          "type": "a",
+        },
+      ],
+      "type": [Function],
+    },
+    {
+      "instance": null,
+      "nodeType": "host",
+      "props": {
+        "children": [
+          <sup>
+            1
+          </sup>,
+          " ",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        ],
+        "id": "footnote-1",
+      },
+      "rendered": [
+        {
+          "instance": null,
+          "nodeType": "host",
+          "props": {
+            "children": 1,
+          },
+          "rendered": [
+            "1",
+          ],
+          "type": "sup",
+        },
+        " ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      ],
+      "type": "div",
+    },
+    {
+      "instance": null,
+      "nodeType": "host",
+      "props": {
+        "children": [
+          <sup>
+            2
+          </sup>,
+          " ",
+          "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        ],
+        "id": "footnote-2",
+      },
+      "rendered": [
+        {
+          "instance": null,
+          "nodeType": "host",
+          "props": {
+            "children": 2,
+          },
+          "rendered": [
+            "2",
+          ],
+          "type": "sup",
+        },
+        " ",
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      ],
+      "type": "div",
+    },
+  ],
+  "type": [Function],
+}
 `;

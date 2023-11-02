@@ -2,62 +2,71 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { Footnotes, FootnoteEntry } from ".";
+import { ErrorBoundary } from "../lib/ErrorBoundary";
 import "./index.css";
 
-const createFootnoteComponentWith = (FootnoteComponent: React.ElementType) => {
-  return ({ children, id }: { children: React.ReactNode; id: number }) => {
-    return (
-      <FootnoteComponent>
-        {children}
-        <a href={`#footnote-${id}`}>
-          <sup>{id}</sup>
-        </a>
-      </FootnoteComponent>
-    );
-  };
-};
-
-export function App() {
+export function Footnote({
+  children,
+  id,
+}: {
+  children;
+  id: number;
+}) {
   return (
-    <Footnotes>
-      {({ Footnote, footnotes }) => {
-        const Note = createFootnoteComponentWith(Footnote);
-        return (
-          <React.Fragment>
-            <Note id={15}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Note>{" "}
-            <Note id={22}>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </Note>{" "}
-            <Note id={35}>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur.
-            </Note>{" "}
-            <Note id={42}>
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              officia deserunt mollit anim id est laborum.
-            </Note>{" "}
-            <Note id={0}>Lorem ipsum</Note> <hr />
-            References: should only show {footnotes.size}
-            {Array.from(footnotes).map(([id, footnote]: FootnoteEntry) => (
-              <div key={`footnote-${id}`} id={`footnote-${id}`}>
-                <sup>{id}</sup> {footnote}
-              </div>
-            ))}
-          </React.Fragment>
-        );
-      }}
-    </Footnotes>
+    <React.Fragment key={`footnote-${id}}`}>
+      {children}
+      <a rel="footnote" href={`#footnote-${id}`} id={`footnote-link-${id}`}>
+        <sup>{id}</sup>
+      </a>
+    </React.Fragment>
   );
 }
 
-let root = document.getElementById("root") as HTMLElement;
+export function App() {
+  return (
+    <ErrorBoundary>
+      <Footnotes>
+        {({ FootnotesProvider, footnotes }) => {
+          return (
+            <FootnotesProvider>
+              <Footnote>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Footnote>{" "}
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.{" "}
+              <Footnote>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur.
+              </Footnote>{" "}
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+              officia <Footnote>deserunt mollit anim id est laborum.</Footnote>{" "}
+              <Footnote>Lorem ipsum</Footnote>
+              <hr />
+              References: should only show {footnotes.size}
+              {Array.from(footnotes).map(([id, footnote]: FootnoteEntry) => {
+                // console.log(id, footnote);
+                return (
+                  <div id={`footnote-${id}`} key={`footnote-fragment-${id}`}>
+                    <a href={`#footnote-link-${id}`} key={`footnote-link-${id}`}>
+                      <sup>{id}</sup>
+                    </a>
+                    {" "} {footnote}
+                  </div>
+                )
+              })}
+            </FootnotesProvider>
+          );
+        }}
+      </Footnotes>
+    </ErrorBoundary>
+  );
+}
+
+const root = document.getElementById("root") as HTMLElement;
 
 root.childNodes.length ||
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
       <App />
-    </React.StrictMode>
+    </React.StrictMode>,
   );

@@ -3,7 +3,6 @@
  */
 // ^^^^^^^^^^^^^^^^^^^^^^^ DO NOT REMOVE OR RELOCATE
 //                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-// @ts-nocheck
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
@@ -31,13 +30,13 @@ afterEach(() => {
  */
 
 it("collects and provides footnotes correctly", async () => {
-  let collectedFootnotes: unknown;
+  let collectedFootnotes;
   const testFootnoteA =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
   const testFootnoteB =
     "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
-  await act(() => {
+  await act(async () => {
     if (!container) {
       throw Error("Missing `container` element in DOM!");
     }
@@ -48,13 +47,13 @@ it("collects and provides footnotes correctly", async () => {
             collectedFootnotes = footnotes;
             return (
               <React.Fragment>
-                <Footnote id={1}>{testFootnoteA}</Footnote>
-                <Footnote id={2}>{testFootnoteB}</Footnote>
+                <Footnote>{testFootnoteA}</Footnote>
+                <Footnote>{testFootnoteB}</Footnote>
               </React.Fragment>
             );
           }}
         </Footnotes>
-      </React.StrictMode>
+      </React.StrictMode>,
     );
   });
   expect(collectedFootnotes.size).toBe(2);
@@ -67,9 +66,9 @@ it("collects and provides footnotes correctly", async () => {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
   const testFootnoteB =
     "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-  const expectedOutput = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<div id=\"footnote-1\"><sup>1</sup> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div><div id=\"footnote-2\"><sup>2</sup> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>`;
+  const expectedOutput = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<div id="footnote-1"><sup>1</sup> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div><div id="footnote-2"><sup>2</sup> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>`;
 
-  await act(() => {
+  await act(async () => {
     if (!container) {
       throw Error("Missing `container` element in DOM!");
     }
@@ -79,8 +78,8 @@ it("collects and provides footnotes correctly", async () => {
           {({ Footnote, footnotes }) => {
             return (
               <React.Fragment>
-                <Footnote id={1}>{testFootnoteA}</Footnote>
-                <Footnote id={2}>{testFootnoteB}</Footnote>
+                <Footnote>{testFootnoteA}</Footnote>
+                <Footnote>{testFootnoteB}</Footnote>
                 {Array.from(footnotes).map(([id, footnote]) => (
                   <div key={`footnote-${id}`} id={`footnote-${id}`}>
                     <sup>{id}</sup> {footnote}
@@ -90,26 +89,27 @@ it("collects and provides footnotes correctly", async () => {
             );
           }}
         </Footnotes>
-      </React.StrictMode>
+      </React.StrictMode>,
     );
   });
   expect(container?.innerHTML).toBe(expectedOutput);
 });
 
-it("can render", () => {
+it("can render", async () => {
+  let tree;
   const testFootnoteA =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
   const testFootnoteB =
     "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-  const tree = renderer
-    .create(
+  await act(async () => {
+    tree = renderer.create(
       <React.StrictMode>
         <Footnotes>
           {({ Footnote, footnotes }) => {
             return (
               <React.Fragment>
-                <Footnote id={1}>{testFootnoteA}</Footnote>
-                <Footnote id={2}>{testFootnoteB}</Footnote>
+                <Footnote>{testFootnoteA}</Footnote>
+                <Footnote>{testFootnoteB}</Footnote>
                 {Array.from(footnotes).map(([id, footnote]) => (
                   <div key={`footnote-${id}`} id={`footnote-${id}`}>
                     <sup>{id}</sup> {footnote}
@@ -119,8 +119,8 @@ it("can render", () => {
             );
           }}
         </Footnotes>
-      </React.StrictMode>
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+      </React.StrictMode>,
+    );
+  });
+  expect(tree.toTree()).toMatchSnapshot();
 });

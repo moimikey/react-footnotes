@@ -7,7 +7,7 @@ module.exports = {
     "<rootDir>/test/**/*.{spec,test}.{js,jsx,ts,tsx}",
   ],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)?$': '@swc/jest'
+    "^.+\\.(js|jsx|ts|tsx)?$": "@swc/jest",
   },
   moduleNameMapper: {
     "\\.(css|sass|scss)$": "identity-obj-proxy",

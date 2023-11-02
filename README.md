@@ -1,9 +1,12 @@
 # 👣 react-footnotes
 
 Dead simple footnotes, in React!
+Works with React 18!
 
-- Doesn't alter wrapped element or add any extra divs or spans
-- Automatically increments footnote identifier number with every new footnote
+- Removes `react-tree-walker` for a super tiny, pure component with no side-effects!
+- Doesn't alter wrapped element (NO EXTRA divs or spans!)
+- Automatic number increments for each Footnote
+- Automatic footnote anchoring and linking
 
 ## Authors
 
@@ -35,60 +38,86 @@ bun install react-footnotes
 
 ```js
 // esmodules
-import { Footnotes } from 'react-footnotes'
+import { Footnotes } from "react-footnotes";
 
 // commonjs
-const Footnotes = require('react-footnotes').Footnotes
+const { Footnotes } = require("react-footnotes");
 ```
 
-### 2. Create a wrapper `Footnote` component
-
-*This let's you customize each footnote line:*
-
-> **Example**
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit.^1^
->
+### 2. Use the built-in Footnote component, or make your own
 
 ```tsx
-export const createFootnoteComponentWith = (Component: React.ElementType) => {
-  return ({ children, id }: { children: React.ReactNode; id: number }) => {
-    return (
-      <Component>
-        {children}
-        <a href={`#footnote-${id}`}> {/* perhaps use Link instead? */}
-          <sup>{id}</sup>            {/* maybe <sub> instead? */}
-        </a>
-      </Component>
-    );
-  };
-};
-```
-
-### 3. Render the `Footnotes`
-
-```tsx
-<Footnotes>
-{({ Footnote, footnotes }) => {
-  const Note = createFootnoteComponentWith(Footnote);
+{({ Footnote, FootnotesProvider, footnotes }) => {
   return (
-    <React.Fragment>
-      <Note>
+    <FootnotesProvider>
+      <Footnote>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </Note>{" "}
-      <Note>
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat.
-      </Note>{" "}
-      References: should only show {footnotes.size}
-      {Array.from(footnotes).map(([id, footnote]: FootnoteEntry) => (
-        <div key={`footnote-${id}`} id={`footnote-${id}`}>
-          <sup>{id}</sup> {footnote}
-        </div>
-      ))}
+      </Footnote>{" "}
+      ...
+```
+
+or create your own:
+
+```jsx
+function SpecialFootnote({ children, id }) {
+  return (
+    <React.Fragment key={`footnote-${id}}`}>
+      {children}
+      <a rel="footnote" href={`#footnote-${id}`} id={`footnote-link-${id}`}>
+        <sup>{id}</sup>
+      </a>
     </React.Fragment>
   );
-}}
-</Footnotes>
+}
+...
+{({ FootnotesProvider, footnotes }) => {
+  return (
+    <FootnotesProvider>
+      <SpecialFootnote>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </SpecialFootnote>
+      ...
+```
+
+### 3. Render it
+
+```tsx
+export function App() {
+  return (
+    <ErrorBoundary>
+      <Footnotes>
+        {({ FootnotesProvider, footnotes }) => {
+          return (
+            <FootnotesProvider>
+              <SpecialFootnote>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </SpecialFootnote>{" "}
+              <Footnote>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat.
+              </Footnote>{" "}
+              <hr />
+              References: should only show {footnotes.size}
+              {Array.from(footnotes).map(([id, footnote]: FootnoteEntry) => {
+                return (
+                  <div id={`footnote-${id}`} key={`footnote-fragment-${id}`}>
+                    <a
+                      href={`#footnote-link-${id}`}
+                      key={`footnote-link-${id}`}
+                    >
+                      <sup>{id}</sup>
+                    </a>{" "}
+                    {footnote}
+                  </div>
+                );
+              })}
+            </FootnotesProvider>
+          );
+        }}
+      </Footnotes>
+    </ErrorBoundary>
+  );
+}
 ```
 
 ## Run Locally
