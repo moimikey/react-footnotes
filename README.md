@@ -1,72 +1,167 @@
 # 👣 react-footnotes
 
-dead simple footnotes, in React
+Dead simple footnotes, in React!
+Works with React 18!
 
-<img width="399" alt="react-footnotes" src="https://user-images.githubusercontent.com/182661/44605190-611d5980-a7b6-11e8-858b-0e640965a7b6.png">
+- Removes `react-tree-walker` for a super tiny, pure component with no side-effects!
+- Doesn't alter wrapped element (NO EXTRA divs or spans!)
+- Automatic number increments for each Footnote
+- Automatic footnote anchoring and linking
 
+## Authors
+
+- [@moimikey](https://www.github.com/moimikey)
+
+## Demo
+
+Insert gif or link to demo
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 ## Installation
 
 ```sh
-npm install --save react-footnotes
+npm install react-footnotes
+# OR
 yarn add react-footnotes
+# OR
+pnpm install react-footnotes
+# OR
+bun install react-footnotes
 ```
+
+## Usage/Examples
+
+### 1. Import the `Footnotes` component
 
 ```js
 // esmodules
-import { Footnotes } from 'react-footnotes'
+import { Footnotes } from "react-footnotes";
 
 // commonjs
-var Footnotes = require('react-footnotes').Footnotes
+const { Footnotes } = require("react-footnotes");
 ```
 
-## Usage
+### 2. Use the built-in Footnote component, or make your own
 
-Pass any props you want to read from `getFootnotes`, to `Footnote`.
+```tsx
+{({ Footnote, FootnotesProvider, footnotes }) => {
+  return (
+    <FootnotesProvider>
+      <Footnote>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </Footnote>{" "}
+      ...
+```
+
+or create your own:
 
 ```jsx
-import * as React from 'react'
-import { Footnotes } from 'react-footnotes'
+function SpecialFootnote({ children, id }) {
+  return (
+    <React.Fragment key={`footnote-${id}}`}>
+      {children}
+      <a rel="footnote" href={`#footnote-${id}`} id={`footnote-link-${id}`}>
+        <sup>{id}</sup>
+      </a>
+    </React.Fragment>
+  );
+}
+...
+{({ FootnotesProvider, footnotes }) => {
+  return (
+    <FootnotesProvider>
+      <SpecialFootnote>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </SpecialFootnote>
+      ...
+```
 
-class App extends React.Component {
-  render() {
-    return (
+### 3. Render it
+
+```tsx
+export function App() {
+  return (
+    <ErrorBoundary>
       <Footnotes>
-        {({ Footnote, getFootnotes }) => (
-          <React.Fragment>
-            <Footnote i={1} desc={`this is a description.`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Footnote> Text that doesnt need to be footnoted, can be passed as normal text.
-            <Footnote i={2} desc={`this is a description.`}>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Footnote>
-            <Footnote i={3} desc={`this is a description.`}>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</Footnote>
-            <Footnote i={4} desc={`this is a description.`}>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Footnote>
-            <ol>
-              {Object.keys(getFootnotes()).map(i => {
+        {({ FootnotesProvider, footnotes }) => {
+          return (
+            <FootnotesProvider>
+              <SpecialFootnote>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </SpecialFootnote>{" "}
+              <Footnote>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat.
+              </Footnote>{" "}
+              <hr />
+              References: should only show {footnotes.size}
+              {Array.from(footnotes).map(([id, footnote]: FootnoteEntry) => {
                 return (
-                  <li key={`footnote-${i}`} id={`footnote-${i}`}>{getFootnotes()[i].desc}</li>
-                )
+                  <div id={`footnote-${id}`} key={`footnote-fragment-${id}`}>
+                    <a
+                      href={`#footnote-link-${id}`}
+                      key={`footnote-link-${id}`}
+                    >
+                      <sup>{id}</sup>
+                    </a>{" "}
+                    {footnote}
+                  </div>
+                );
               })}
-            </ol>
-          </React.Fragment>
-        )}
+            </FootnotesProvider>
+          );
+        }}
       </Footnotes>
-    )
-  }
+    </ErrorBoundary>
+  );
 }
 ```
 
-## TODO
+## Run Locally
 
-- [ ] automatically generate the index number so it doesn't have to be passed manually...
-
-## Development
+Clone the project
 
 ```sh
-npm run dev
-
-# go to http://localhost:1234
+git clone git@github.com:moimikey/react-footnotes.git
 ```
 
-### Distribution
+Go to the project directory
 
 ```sh
-npm run build
+cd react-footnotes
 ```
+
+Install dependencies
+
+```sh
+pnpm install
+```
+
+Start the server
+
+```sh
+pnpm dev
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```sh
+pnpm run test
+```
+
+## Contributing
+
+Contributions are always welcome!
+
+See `contributing.md` for ways to get started.
+
+Please adhere to this project's `code of conduct`.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
